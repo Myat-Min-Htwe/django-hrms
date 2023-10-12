@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}  <h2>Attendance Update</h2> {% endblock %}
+{% block body %}
+
+{% load static %}
+
+<div class="container-fluid">
+
+<form class="container col-lg-4 p-4 g-3 bg-dark-subtle mt-5" method="POST" action="/update/{{attendance.id}}/" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="col-md-12">
+      <label class="form-label">{{form.name.label_tag}}</label>
+      {{form.name}}
+    </div>
+    </br>
+    <div class="col-md-12">
+        <label class="form-label">{{form.date.label_tag}}</label>
+        {{form.date}}
+    </div>
+    </br>
+    <div class="col-12">
+        <label class="form-label">{{ form.is_present.label_tag }}</label>
+         {{ form.is_present }}
+    </div>
+    </br>
+    <div class="col-12">
+      <label class="form-label">{{ form.check_in_time.label_tag }}</label>
+      {{ form.check_in_time }}
+    </div>
+    <br>
+    <div class="col-12">
+      <label class="form-label">{{ form.check_out_time.label_tag }}</label>
+      {{ form.check_out_time }}
+    </div>
+
+    </br>
+    
+      <a href="javascript:history.back()" class="btn btn-dark me-2" role="button">Back</a>
+      <button type="submit" class="btn btn-success">Save</button>
+   
+  </form>
+</div>
+{% endblock %}

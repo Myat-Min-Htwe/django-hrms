@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container">
+    
+
+    <div class="row p-5">
+        <div class="col-4"></div>
+        <div class="col-4 p-5">
+            
+            <div class="card mt-5">
+                <div class="card-header text-center text-capitalize bg-info">
+                    <h2 class="text-info-emphasis">Login</h2>
+                </div>
+                <div class="card-body bg-dark text-light">
+                    <form method="POST" action="/login/">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Username:</label>
+                            <input type="text" name="username" required class="form-control bg-dark text-light">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password:</label>
+                            <input type="password" name="password" required class="form-control bg-dark text-light">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-info" style="font-size: small;">Log in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+
+
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="ms-3" href="#">
+            <img src="/static/logoimg.png"><img src="/static/logoimg.png"><img src="/static/logoimg.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {% if user.is_authenticated %}
+        <div class="collapse navbar-collapse ms-2" id="navbarNav">
+            <ul class="navbar-nav">
+                <div class="btn-group ms-5">
+                    <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Attendance
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="/attendance/create/">
+                            <i class="fa-solid fa-plus bi text-success" aria-hidden="true"></i>
+                            Create</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="{% url 'attendancelist' %}">
+                            <i class="fa-solid fa-list-ul bi text-info" aria-hidden="true"></i>
+                            List</a></li> 
+                    </ul>
+                </div>
+                <div class="btn-group ms-3">
+                    <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Extant
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="/extant/create/">
+                            <i class="fa-solid fa-plus bi text-success" aria-hidden="true"></i>
+                            Create</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="/extant/list/">
+                            <i class="fa-solid fa-list-ul bi text-info" aria-hidden="true"></i>
+                            List</a></li> 
+                    </ul>
+                </div>
+                <div class="btn-group ms-3">
+                    <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Payrow
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="/payrow/create/">
+                            <i class="fa-solid fa-plus bi text-success" aria-hidden="true"></i>
+                            Create</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="/payrow/list/">
+                            <i class="fa-solid fa-list-ul bi text-info" aria-hidden="true"></i>
+                            List</a></li> 
+                    </ul>
+                </div>
+                
+            </ul>
+        </div>
+        
+        <div class="d-flex mt-1 me-2">
+            <a href="#" class="text-decoration-none me-2 icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);">
+            <i class="fa-solid fa-user mt-1 bi" aria-hidden="true"></i>
+            {{ user.username }} &nbsp;&nbsp;/</a> 
+            
+            <a href="/logout" class="text-decoration-none ms-2 icon-link icon-link-hover">
+                Logout<i class="fa-solid fa-arrow-right bi" aria-hidden="true"></i></a>
+        </div>
+        {% endif %}
+
+    </div>
+</nav>

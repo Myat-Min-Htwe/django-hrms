@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block title %} <h2>Payrow Detail</h2> {% endblock %}
+{% block body %}
+
+{% load static %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+
+    <div class="col-sm-6">
+      <div class="card bg-primary-subtle">
+        <div class="card-body">
+
+          <table class="table table-primary">
+            <tbody>
+              <tr>
+                <th scope="col">ID.</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ payrows.id }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Name.</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ payrows.name }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Pay_date.</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ payrows.pay_date }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Base_Salary.</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ payrows.base_salary }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Overtime.</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ payrows.overtime }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Bonus.</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ payrows.bonus }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Paystub.</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{% if paystub_image %}
+                  <a href="{{paystub_image_url}}">{{ paystub_image }}</a>
+                  {% endif %}
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <a href="javascript:history.back()" class="btn btn-dark me-1" role="button">Back</a>
+          <a href="/payrow/update/{{payrows.id}}/" class="btn btn-primary me-1">Update</a>
+
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Delete
+          </button>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <p class="modal-title fs-5" id="exampleModalLabel"><span class="text-primary-emphasis fw-bold">{{ payrows.name }} ( {{ payrows.base_salary }} )</span></p>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <i class="fa-solid fa-circle-exclamation text-danger"></i>
+                  <i class="text-danger fw-medium">Are you sure you want to delete ?</i>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+
+                  <form action="/payrow/delete/{{payrows.id}}/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3"></div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}  <h2>Payrow Create</h2> {% endblock %}
+{% block body %}
+
+{% load static %}
+
+<div class="container-fluid">
+
+
+<form class="container col-lg-4 p-5 g-3 bg-dark-subtle mt-3" method="POST" action="/payrow/create/" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="col-md-12">
+        <label class="form-label">Name :</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Pay_Date :</label>
+        <input type="date" name="pay_date" class="form-control" required>
+    </div>
+    <div class="col-12">
+        <label class="form-label">Base_Salary :</label>
+        <input type="number" name="base_salary" class="form-control" required>
+    </div>
+    <div class="col-12">
+        <label class="form-label">Overtime :</label>
+        <input type="number" name="overtime" class="form-control" required>
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Bonus :</label>
+        <input type="number" name="bonus" class="form-control" required>
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Paystub :</label>
+        <input type="file" name="paystub" class="form-control">
+    </div>
+
+    </br>
+    <div class="col-lg-4">
+        <a href="javascript:history.back()" class="btn btn-dark">Back</a>
+      <button type="submit" class="btn btn-success">Create</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

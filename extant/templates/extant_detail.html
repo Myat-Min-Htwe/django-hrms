@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block title %}  <h2>Extent Detail</h2> {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+
+    <div class="col-sm-6">
+      <div class="card bg-primary-subtle">
+        <div class="card-body">
+
+          <table class="table table-primary">
+            <tbody>
+              <tr>
+                <th scope="col">ID.</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ extants.id }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Name.</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ extants.name }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Department</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ extants.department }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Phone_Number</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ extants.phone_number }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Address</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ extants.address }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Salary</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{ extants.salary }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Hire_Date</th>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{extants.hire_date}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <a href="javascript:history.back()" class="btn btn-dark me-1" role="button">Back</a>
+          <a href="/extant/update/{{extants.id}}/" class="btn btn-primary me-1">Update</a>
+
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Delete
+          </button>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <p class="modal-title fs-5" id="exampleModalLabel"><span class="text-primary-emphasis fw-bold">{{ extants.name }} ( {{ extants.department }} )</span></p>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <i class="fa-solid fa-circle-exclamation text-danger"></i>
+                  <i class="text-danger fw-medium">Are you sure you want to delete ?</i>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+
+                  <form action="/extant/delete/{{extants.id}}/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3"></div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}  <h2>Payrow Update</h2> {% endblock %}
+{% block body %}
+
+{% load static %}
+
+<div class="container-fluid">
+
+
+<form class="container col-lg-4 p-5 g-3 bg-dark-subtle" method="POST" action="/payrow/update/{{payrows.id}}/" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="col-md-12">
+        <label class="form-label">Name :</label>
+        <input type="text" name="name" value="{{payrows.name}}" class="form-control">
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Pay_Date :</label>
+        <input type="date" name="pay_date" value="{{payrows.pay_date}}" class="form-control">
+    </div>
+    <div class="col-12">
+        <label class="form-label">Base_Salary :</label>
+        <input type="number" name="base_salary" value="{{payrows.base_salary}}" class="form-control">
+    </div>
+    <div class="col-12">
+        <label class="form-label">Overtime :</label>
+        <input type="number" name="overtime" value="{{payrows.overtime}}" class="form-control">
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Bonus :</label>
+        <input type="number" name="bonus" value="{{payrows.bonus}}" class="form-control">
+    </div>
+    
+    
+    <div class="col-md-12">
+        <label class="form-label">Paystub :</label>
+        <input type="file" name="paystub" class="form-control">
+        {% if paystub_image %}
+        <p><strong>Selected Paystub :</strong> <a href="{{paystub_image_url}}">{{ paystub_image }}</a></p>
+        {% endif %}
+    </div>
+    
+    <div class="col-lg-4">
+        <a href="javascript:history.back()" class="btn btn-dark">Back</a>
+      <button type="submit" class="btn btn-success">Save</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

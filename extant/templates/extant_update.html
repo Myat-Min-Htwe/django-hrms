@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}  <h2>Extent Update</h2> {% endblock %}
+{% block body %}
+
+{% load static %}
+
+<div class="container-fluid">
+
+
+<form class="container col-lg-4 p-5 g-3 bg-dark-subtle mt-3" method="POST" action="/extant/update/{{extants.id}}/" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="col-md-12">
+        <label class="form-label">Name :</label>
+        <input type="text" name="name" value="{{extants.name}}" class="form-control">
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Department :</label>
+        <select name="department" class="form-select">
+          <option value="developer" {% if extants.department == 'developer' %} selected {% endif %}>Developer</option>
+          <option value="frontend" {% if extants.department == 'frontend' %} selected {% endif %}>FrontEnd</option>
+          <option value="uiux" {% if extants.department == 'uiux' %} selected {% endif %}>UI/UX</option>
+          <option value="backend" {% if extants.department == 'backend' %} selected {% endif %}>BackEnd</option>
+        </select>
+      </div>
+    <div class="col-12">
+        <label class="form-label">Phone Number :</label>
+        <input type="number" name="phone_number" value="{{extants.phone_number}}" class="form-control">
+    </div>
+    <div class="col-12">
+        <label class="form-label">Address :</label>
+        <input type="text" name="address" value="{{extants.address}}" class="form-control">
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Salary :</label>
+        <input type="number" name="salary" value="{{extants.salary}}" class="form-control">
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Hire Date :</label>
+        <input type="date" name="hire_date" value="{{extants.hire_date}}" class="form-control">
+    </div>
+
+    </br>
+    <div class="col-lg-4">
+        <a href="javascript:history.back()" class="btn btn-dark">Back</a>
+      <button type="submit" class="btn btn-success">Save</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
